@@ -2,13 +2,13 @@
 
 _ProseMirror + React done right_
 
-ProseMirror is one of the best, if not the best, rich text editors
-out there. It may not be written in React, but its render model is
-very similar to React's. It is therefore a great fit for your
-React project.
+[ProseMirror](https://prosemirror.net/) is one of the best rich text editors out there.
+Although it's not written in React, its render model is very
+similar to React's. It is therefore a great fit for your React
+project.
 
-This package lets you integrate ProseMirror into your project
-quickly and correctly, using modern React best practices.
+This package lets you bootstrap a minimal React integration quickly, using
+modern React best practices.
 
 ## Installation
 
@@ -27,7 +27,7 @@ so makes sure you have them installed, too.
 
 ## Usage
 
-This is all you need started:
+This is all you need to get started:
 
 ```javascript
 import 'prosemirror-view/style/prosemirror.css';
@@ -58,16 +58,14 @@ updates using the update function. It accepts the following props:
 
 -   `state` — the `EditorState` created by `useProseMirror`.
 -   `onChange` — the update function returned by `useProseMirror`.
--   `props` — (optional) any [`DirectEditorProps`](https://prosemirror.net/docs/ref/#view.DirectEditorProps)
-    you want set on the `EditorView`, except [`dispatchTransaction`](https://prosemirror.net/docs/ref/#view.DirectEditorProps.dispatchTransaction).
--   `style` — (optional) a React style object to be passed the `div` containing ProseMirror.
--   `className` — (optional) a string any classes you want to be passed to the `div` containing ProseMirror.
+-   `style` — (optional) a React style object to pass to the `div` containing ProseMirror.
+-   `className` — (optional) a string of classes you want to pass to the `div` containing ProseMirror.
 
 It also accepts any
-[`DirectEditorProp`](https://prosemirror.net/docs/ref/#view.DirectEditorProps)
-except
-[`dispatchTransaction`](https://prosemirror.net/docs/ref/#view.DirectEditorProps.dispatchTransaction). So, for example, you can
-write:
+[`EditorProps`](https://prosemirror.net/docs/ref/#view.EditorProps).
+So you can, for example, set
+[`transformPastedHTML`](https://prosemirror.net/docs/ref/#view.EditorProps.transformPastedHTML)
+directly on the component:
 
 ```javascript
 <ProseMirror
@@ -85,7 +83,6 @@ If you pass a `ref`, `<ProseMirror />` exposes a `view` getter to retrieve the u
 ```javascript
 const [state, setState] = useProseMirror({schema});
 const viewRef = useRef();
-
 return (
     <ProseMirror
         ref={viewRef}
