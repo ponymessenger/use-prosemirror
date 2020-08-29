@@ -1,0 +1,19 @@
+{
+    "exclude": ["node_modules"],
+    "include": ["src/**/*"],
+    "compilerOptions": {
+        "outDir": "dist/",
+        "declaration": true,
+        "noEmit": false,
+        "jsx": "react",
+        "esModuleInterop": true,
+        "types": [],
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "target": "ES6",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true
+    }
+}
