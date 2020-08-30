@@ -31,14 +31,12 @@ export default forwardRef<Handle, Props>(function ProseMirror(
     const onChangeRef = useRef(onChange);
     onChangeRef.current = onChange;
     const viewRef = useRef<EditorView<any>>(null!);
-    viewRef.current?.update(props);
+    viewRef.current?.update(buildProps(props));
     useEffect(() => {
-        const view = new EditorView(root.current, {
-            ...initialProps.current,
-            dispatchTransaction: transaction => {
-                onChangeRef.current(view.state.apply(transaction));
-            },
-        });
+        const view = new EditorView(
+            root.current,
+            buildProps(initialProps.current),
+        );
         viewRef.current = view;
         return () => {
             view.destroy();
@@ -50,4 +48,14 @@ export default forwardRef<Handle, Props>(function ProseMirror(
         },
     }));
     return <div ref={root} style={style} className={className} />;
+    function buildProps(props: DirectEditorProps): DirectEditorProps {
+        return {
+            ...props,
+            dispatchTransaction: transaction => {
+                onChangeRef.current(
+                    viewRef.current.state.apply(transaction),
+                );
+            },
+        };
+    }
 });
