@@ -22,22 +22,16 @@ interface Props<S extends Schema = any>
 }
 
 export default forwardRef<Handle, Props>(function ProseMirror(
-    props,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    {dispatchTransaction, onChange, style, className, ...props},
     ref,
 ): JSX.Element {
-    const {
-        onChange,
-        dispatchTransaction,
-        style,
-        className,
-        ...setProps
-    } = props;
     const root = useRef<HTMLDivElement>(null!);
-    const initialProps = useRef(setProps);
+    const initialProps = useRef(props);
     const onChangeRef = useRef(onChange);
     onChangeRef.current = onChange;
     const viewRef = useRef<EditorView<any>>(null!);
-    viewRef.current?.setProps(setProps);
+    viewRef.current?.setProps(props);
     useEffect(() => {
         const view = new EditorView(root.current, {
             ...initialProps.current,
