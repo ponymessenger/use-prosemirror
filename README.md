@@ -2,6 +2,12 @@
 
 _ProseMirror + React done right_
 
+- [Installation](#installation)
+- [Usage](#usage)
+  - [`useProseMirror(config)`](#useprosemirrorconfig)
+  - [`<ProseMirror />`](#prosemirror-)
+- [More Info](#more-info)
+
 [ProseMirror](https://prosemirror.net/) is one of the best rich text editors out there.
 Although it's not written in React, its render model is very
 similar to React's. It is therefore a great fit for your React
