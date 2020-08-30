@@ -31,7 +31,7 @@ export default forwardRef<Handle, Props>(function ProseMirror(
     const onChangeRef = useRef(onChange);
     onChangeRef.current = onChange;
     const viewRef = useRef<EditorView<any>>(null!);
-    viewRef.current?.setProps(props);
+    viewRef.current?.update(props);
     useEffect(() => {
         const view = new EditorView(root.current, {
             ...initialProps.current,
