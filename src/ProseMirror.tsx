@@ -5,7 +5,11 @@ import React, {
     forwardRef,
     CSSProperties,
 } from 'react';
-import {EditorView, DirectEditorProps} from 'prosemirror-view';
+import {
+    EditorView,
+    EditorProps,
+    DirectEditorProps,
+} from 'prosemirror-view';
 import {EditorState} from 'prosemirror-state';
 import {Schema} from 'prosemirror-model';
 
@@ -13,8 +17,7 @@ export interface Handle {
     view: EditorView;
 }
 
-interface Props<S extends Schema = any>
-    extends Partial<DirectEditorProps<S>> {
+interface Props<S extends Schema = any> extends EditorProps<S> {
     state: EditorState<S>;
     onChange: (state: EditorState) => void;
     style?: CSSProperties;
@@ -22,8 +25,7 @@ interface Props<S extends Schema = any>
 }
 
 export default forwardRef<Handle, Props>(function ProseMirror(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    {dispatchTransaction, onChange, style, className, ...props},
+    {onChange, style, className, ...props},
     ref,
 ): JSX.Element {
     const root = useRef<HTMLDivElement>(null!);
@@ -48,7 +50,10 @@ export default forwardRef<Handle, Props>(function ProseMirror(
         },
     }));
     return <div ref={root} style={style} className={className} />;
-    function buildProps(props: DirectEditorProps): DirectEditorProps {
+
+    function buildProps(
+        props: Omit<DirectEditorProps, 'dispatchTransaction'>,
+    ): DirectEditorProps {
         return {
             ...props,
             dispatchTransaction: transaction => {
