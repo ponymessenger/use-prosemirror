@@ -63,7 +63,11 @@ editor state provided by `useProseMirror` and dispaches state
 updates using the update function. It accepts the following props:
 
 -   `state` — the `EditorState` created by `useProseMirror`.
--   `onChange` — the update function returned by `useProseMirror`.
+-   `onChange` — a function that accepts the next state. This can be
+    the update function returned by `useProseMirror`, or some function
+    that accepts the next state and eventually calls the update
+    function. Provide this if you do not provide
+    [`dispatchTransaction`](https://prosemirror.net/docs/ref/#view.DirectEditorProps.dispatchTransaction).
 -   `style` — (optional) a React style object to pass to the `div` containing ProseMirror.
 -   `className` — (optional) a string of classes you want to pass to the `div` containing ProseMirror.
 
@@ -83,6 +87,14 @@ directly on the component:
     }}
 />
 ```
+
+If you pass
+[`dispatchTransaction`](https://prosemirror.net/docs/ref/#view.DirectEditorProps.dispatchTransaction)
+to `<ProseMirror />`, you are responsible for applying dispatched
+transactions to the existing state and calling the update function
+returned by `useProseMirror()`. `dispatchTransaction` takes
+precendence over `onChange`, which will not be called if
+`dispatchTransaction` is provided.
 
 If you pass a `ref`, `<ProseMirror />` exposes a `view` getter to retrieve the underlying [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView) instance:
 
