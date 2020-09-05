@@ -14,10 +14,15 @@ render model is very similar to React's. It is therefore a great
 fit for your React project.
 
 This package lets you bootstrap a minimal, unopinionated React
-integration quickly, using modern React best practices. Unlike
-other integrations, it separates state management and presentation
-so you can keep your state as high in your render tree as
-necessary.
+integration quickly, using modern React best practices.
+
+Unlike other integrations, it:
+
+-   Separates state and presentation so you can keep your state
+    as high up as necessary.
+-   Allows using [`EditorView` props](https://prosemirror.net/docs/ref/#view.Props)
+    as React props.
+-   Is written in TypeScript.
 
 ## Installation
 
