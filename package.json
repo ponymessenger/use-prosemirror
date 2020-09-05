@@ -12,7 +12,8 @@
     "license": "MIT",
     "scripts": {
         "clean": "rimraf dist/",
-        "build": "yarn run clean && tsc"
+        "build": "yarn run clean && tsc",
+        "prepublishOnly": "yarn run build"
     },
     "peerDependencies": {
         "prosemirror-model": "^1.11.0",
