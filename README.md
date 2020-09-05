@@ -14,7 +14,7 @@ render model is very similar to React's. It is therefore a great
 fit for your React project.
 
 This package lets you bootstrap a minimal, unopinionated React
-integration quickly, using modern React best practices. Unline
+integration quickly, using modern React best practices. Unlike
 other integrations, it separates state management and presentation
 so you can keep your state as high in your render tree as
 necessary.
@@ -62,7 +62,7 @@ the initial state and returns it along with an update function.
 ### `<ProseMirror />`
 
 This component wraps ProseMirror's `EditorView`. It displays the
-editor state provided by `useProseMirror` and dispaches state
+editor state provided by `useProseMirror` and dispatches state
 updates using the update function. It accepts the following props:
 
 -   `state` — the `EditorState` created by `useProseMirror`.
@@ -96,7 +96,7 @@ If you pass
 to `<ProseMirror />`, you are responsible for applying dispatched
 transactions to the existing state and calling the update function
 returned by `useProseMirror()`. `dispatchTransaction` takes
-precendence over `onChange`, which will not be called if
+precedence over `onChange`, which will not be called if
 `dispatchTransaction` is provided.
 
 If you pass a `ref`, `<ProseMirror />` exposes a `view` getter to retrieve the underlying [`EditorView`](https://prosemirror.net/docs/ref/#view.EditorView) instance:
