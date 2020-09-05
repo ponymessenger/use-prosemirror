@@ -22,6 +22,9 @@ interface PropsBase extends EditorProps {
     className?: string;
 }
 
+// If using TypeScript, the compiler will enforce that either
+// `onChange` or `dispatchTransaction` are provided, but not both:
+
 interface PropsWithOnChange extends PropsBase {
     onChange: (state: EditorState) => void;
     dispatchTransaction?: never;
@@ -43,8 +46,14 @@ export default forwardRef<Handle, Props>(function ProseMirror(
     const buildPropsRef = useRef(buildProps);
     buildPropsRef.current = buildProps;
     const viewRef = useRef<EditorView<any>>(null!);
+    // If this is a non-initial render, update the editor view as part
+    // of the React render. Otherwise, bootstrap and render in
+    // `useEffect` below.
     viewRef.current?.update(buildProps(props));
     useEffect(() => {
+        // Bootstrap the editor on first render. Note: running
+        // non-initial renders inside `useEffect` produced glitchy
+        // behavior.
         const view = new EditorView(
             root.current,
             buildPropsRef.current(initialProps.current),
@@ -71,6 +80,7 @@ export default forwardRef<Handle, Props>(function ProseMirror(
         return {
             ...props,
             dispatchTransaction: transaction => {
+                // `dispatchTransaction` takes precedence.
                 if (props.dispatchTransaction) {
                     props.dispatchTransaction(transaction);
                 } else {
