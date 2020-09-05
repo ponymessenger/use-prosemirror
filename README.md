@@ -8,13 +8,16 @@ _ProseMirror + React done right_
   - [`<ProseMirror />`](#prosemirror-)
 - [More Info](#more-info)
 
-[ProseMirror](https://prosemirror.net/) is one of the best rich text editors out there.
-Although it's not written in React, its render model is very
-similar to React's. It is therefore a great fit for your React
-project.
+[ProseMirror](https://prosemirror.net/) is one of the best rich
+text editors out there. Although it is not written in React, its
+render model is very similar to React's. It is therefore a great
+fit for your React project.
 
-This package lets you bootstrap a minimal React integration quickly, using
-modern React best practices.
+This package lets you bootstrap a minimal, unopinionated React
+integration quickly, using modern React best practices. Unline
+other integrations, it separates state management and presentation
+so you can keep your state as high in your render tree as
+necessary.
 
 ## Installation
 
