@@ -7,7 +7,7 @@
     "files": [
         "dist"
     ],
-    "repository": "https://github.com/dminkovsky/use-prose-mirror",
+    "repository": "https://github.com/dminkovsky/use-prosemirror",
     "author": "Dmitry Minkovsky",
     "license": "MIT",
     "scripts": {
