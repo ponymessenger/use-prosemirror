@@ -37,7 +37,7 @@ yarn add use-prosemirror
 ```
 
 This package specifies React and ProseMirror as peer dependencies,
-so makes sure you have them installed, too.
+so make sure you have them installed, too.
 
 ## Usage
 
@@ -67,7 +67,7 @@ the initial state and returns it along with an update function.
 ### `<ProseMirror />`
 
 This component wraps ProseMirror's `EditorView`. It displays the
-editor state provided by `useProseMirror` and dispatches state
+editor state provided by `useProseMirror()` and dispatches state
 updates using the update function. It accepts the following props:
 
 -   `state` — the `EditorState` created by `useProseMirror`.
