@@ -1,17 +1,10 @@
 import {useState, SetStateAction, Dispatch} from 'react';
-import {EditorState, Selection, Plugin} from 'prosemirror-state';
-import {Schema, Node, Mark} from 'prosemirror-model';
+import {EditorState} from 'prosemirror-state';
 
-interface Config<S extends Schema = any> {
-    schema?: S | null;
-    doc?: Node<S> | null;
-    selection?: Selection<S> | null;
-    storedMarks?: Mark[] | null;
-    plugins?: Array<Plugin<any, S>> | null;
-}
+type Config = Parameters<typeof EditorState.create>[0];
 
-export default function useProseMirror<S extends Schema = any>(
-    config: Config<S>,
+export default function useProseMirror(
+    config: Config,
 ): [EditorState, Dispatch<SetStateAction<EditorState>>] {
     return useState(() => EditorState.create(config));
 }
