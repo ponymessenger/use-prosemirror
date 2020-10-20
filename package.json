@@ -1,6 +1,6 @@
 {
     "name": "use-prosemirror",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "ProseMirror for React",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
