@@ -25,17 +25,18 @@ interface PropsBase extends EditorProps {
 // If using TypeScript, the compiler will enforce that either
 // `onChange` or `dispatchTransaction` are provided, but not both:
 
-interface PropsWithOnChange extends PropsBase {
+interface PropsWithOnChange {
     onChange: (state: EditorState) => void;
     dispatchTransaction?: never;
 }
 
-interface PropsWithDispatchTransaction extends PropsBase {
+interface PropsWithDispatchTransaction {
     dispatchTransaction: (transaction: Transaction) => void;
     onChange?: never;
 }
 
-type Props = PropsWithOnChange | PropsWithDispatchTransaction;
+type Props = PropsBase &
+    (PropsWithOnChange | PropsWithDispatchTransaction);
 
 export default forwardRef<Handle, Props>(function ProseMirror(
     props,
