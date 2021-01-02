@@ -27,7 +27,7 @@ Unlike other integrations, it:
 ## Installation
 
 ```
-node install --save use-prosemirror
+npm install --save use-prosemirror
 ```
 
 or
