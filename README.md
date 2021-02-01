@@ -104,6 +104,17 @@ directly on the component:
 />
 ```
 
+<blockquote>
+
+**Note**: If passing a value for the `nodeViews` prop, its identity
+should be stable. If it changes on every render, the editor will
+not work correctly. This issue is described in
+[#1](https://github.com/dminkovsky/use-prosemirror/issues/1#issue-696086919)
+and an example of using `nodeViews` with React is given in
+[#5](https://github.com/dminkovsky/use-prosemirror/issues/5#issuecomment-769510937).
+
+</blockquote>
+
 If you pass
 [`dispatchTransaction`](https://prosemirror.net/docs/ref/#view.DirectEditorProps.dispatchTransaction)
 to `<ProseMirror />`, you are responsible for applying dispatched
