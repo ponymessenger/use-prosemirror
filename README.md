@@ -2,6 +2,7 @@
 
 _ProseMirror + React done right_
 
+- [Example](#example)
 - [Installation](#installation)
 - [Usage](#usage)
   - [`useProseMirror(config)`](#useprosemirrorconfig)
@@ -23,6 +24,13 @@ Unlike other integrations, it:
 -   Allows using [`EditorView` props](https://prosemirror.net/docs/ref/#view.Props)
     as React props.
 -   Is written in TypeScript.
+
+## Example
+
+A simple example is available on
+[CodeSandbox](https://codesandbox.io/s/use-prosemirror-basic-example-nie7f?file=/src/App.tsx).
+Please join [this discussion](https://github.com/dminkovsky/use-prosemirror/discussions/8) if
+you are interested in further usage examples.
 
 ## Installation
 
