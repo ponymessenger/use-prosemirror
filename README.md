@@ -2,6 +2,12 @@
 
 _ProseMirror + React done right_
 
+**NOTE** This library is in production at [Pony
+Messenger](https://www.ponymessenger.com/). It was open
+sourced to contribute to the incredible ProseMirror
+ecosystem, and to ensure the best possible experience for
+Pony users.
+
 - [Example](#example)
 - [Installation](#installation)
 - [Usage](#usage)
