@@ -13,7 +13,7 @@ import {
 import {EditorState, Transaction} from 'prosemirror-state';
 
 export interface Handle {
-    view: EditorView;
+    view: EditorView | null;
 }
 
 interface PropsBase extends EditorProps {
