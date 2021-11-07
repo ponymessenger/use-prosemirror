@@ -13,7 +13,7 @@ import {
 import {EditorState, Transaction} from 'prosemirror-state';
 
 export interface Handle {
-    view: EditorView;
+    view: EditorView | null;
 }
 
 interface PropsBase extends EditorProps {
@@ -44,7 +44,7 @@ export default forwardRef<Handle, Props>(function ProseMirror(
 ): JSX.Element {
     const root = useRef<HTMLDivElement>(null!);
     const initialProps = useRef(props);
-    const viewRef = useRef<EditorView<any>>(null!);
+    const viewRef = useRef<EditorView<any> | null>(null);
     // If this is a non-initial render, update the editor view with
     // the React render.
     // - First update editor state using `EditorView#updateState()`.
@@ -90,7 +90,7 @@ export default forwardRef<Handle, Props>(function ProseMirror(
                 // `dispatchTransaction` takes precedence.
                 if (props.dispatchTransaction) {
                     props.dispatchTransaction(transaction);
-                } else if (props.onChange) {
+                } else if (props.onChange && viewRef.current) {
                     props.onChange(
                         viewRef.current.state.apply(transaction),
                     );
