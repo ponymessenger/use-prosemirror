@@ -1,8 +1,8 @@
 # use-prosemirror
 
-_ProseMirror + React done right_
+_ProseMirror + React made easy_
 
-**NOTE** This library is in production at [Pony
+**NOTE**: This library is in production at [Pony
 Messenger](https://www.ponymessenger.com/). It was open
 sourced to contribute to the incredible ProseMirror
 ecosystem, and to ensure the best possible experience for
