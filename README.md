@@ -92,6 +92,10 @@ updates using the update function. It accepts the following props:
     [`dispatchTransaction`](https://prosemirror.net/docs/ref/#view.DirectEditorProps.dispatchTransaction).
 -   `style` — (optional) a React style object to pass to the `div` containing ProseMirror.
 -   `className` — (optional) a string of classes you want to pass to the `div` containing ProseMirror.
+-   `editorViewFactory` — (optional) a function that accepts the root
+    DOM node where the editor will be mounted, `DirectEditorProps` and
+    component props, and returns an `EditorView`. Use this if you extend
+    `EditorView` or want to instantiate the `EditorView` in some special way.
 
 It also accepts any
 [`EditorProps`](https://prosemirror.net/docs/ref/#view.EditorProps).
