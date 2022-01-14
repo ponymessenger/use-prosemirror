@@ -20,6 +20,11 @@ interface PropsBase extends EditorProps {
     state: EditorState;
     style?: CSSProperties;
     className?: string;
+    editorViewFactory?: (
+        el: HTMLDivElement,
+        editorProps: DirectEditorProps,
+        props: Props,
+    ) => EditorView;
 }
 
 // If using TypeScript, the compiler will enforce that either
@@ -59,10 +64,14 @@ export default forwardRef<Handle, Props>(function ProseMirror(
         // Bootstrap the editor on first render. Note: running
         // non-initial renders inside `useEffect` produced glitchy
         // behavior.
-        const view = new EditorView(root.current, {
+        const {editorViewFactory: factory} = initialProps.current;
+        const config = {
             state: initialProps.current.state,
             ...buildProps(initialProps.current),
-        });
+        };
+        const view =
+            factory?.(root.current, config, initialProps.current) ||
+            new EditorView(root.current, config);
         viewRef.current = view;
         return () => {
             view.destroy();
